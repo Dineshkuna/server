@@ -7,10 +7,14 @@ const app = express();
 
 
 connectDB();
-
+app.use(cors({
+  origin:function(origin,callback){
+    return callback(null,true)
+  }
+}))
 
 app.use(express.json({ extended: false }));
-app.use(cors());
+// app.use(cors());
 
 
 app.use('/api/auth', require('./routes/auth'));
